@@ -1,6 +1,6 @@
 const mongoose=require("mongoose")
 //schema
-const postSchema=new mongoose.Schema({
+const categorySchema=new mongoose.Schema({
   name:{
         type:String,
         require:true
@@ -11,33 +11,20 @@ const postSchema=new mongoose.Schema({
         require:true,
         ref:"User"
     },
-    author:{
-        type:mongoose.Schema.Types.ObjectId,
-        require:true,
-        ref:"Category"
-    },
+ 
    shares:{
         type:Number,
         default:0
     },
     
-    likes:[{
+    posts:{
         type:mongoose.Schema.Types.ObjectId,
        
-        ref:"User"
-    }],
-    disLikes:[{
-        type:mongoose.Schema.Types.ObjectId,
-       
-        ref:"User"
-    }],
-    comments:[{
-        type:mongoose.Schema.Types.ObjectId,
-       
-        ref:"Comments"
-    }],
+        ref:"Post"
+    },
+
     
 },{timestamps:true})
 //compile schema to model
-const Post=mongoose.model("User",postSchema)
-module.exports=Post
+const Category=mongoose.model("User",categorySchema)
+module.exports=Category
